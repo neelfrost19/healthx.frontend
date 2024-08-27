@@ -1,0 +1,190 @@
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(180deg, #1e1e2f, #111);
+}
+
+.sidebar {
+    width: 240px;
+    background-color: #1e1e2f;
+    padding: 20px;
+    color: #fff;
+}
+
+.sidebar-title h1 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #00bfa6;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin: 2rem 0;
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.sidebar nav ul li.active {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 20px;
+    background: linear-gradient(180deg, #292b3a, #111);
+    padding-left: 30px;
+    border-radius: 6px;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    color: #fff;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #292b3a;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.filter-dropdown {
+    margin-left: 10px;
+    padding: 8px;
+    border: 1px solid #292b3a;
+    border-radius: 4px;
+    background-color: #1e1e2f;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    appearance: none; /* Remove default dropdown arrow */
+    -webkit-appearance: none; /* Remove default dropdown arrow on Safari */
+    -moz-appearance: none; /* Remove default dropdown arrow on Firefox */
+    position: relative;
+}
+
+.filter-dropdown:hover {
+    background-color: #292b3a;
+}
+
+/* Custom arrow for the dropdown */
+.filter-dropdown::after {
+    content: '▼'; /* Downward arrow */
+    font-size: 0.8rem;
+    color: #fff;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Allow clicks to pass through to the dropdown */
+}
+
+/* Remove the white background when the dropdown is open */
+.filter-dropdown option {
+    background-color: #1e1e2f;
+    color: #fff;
+}
+
+/* Custom styling for the selected option */
+.filter-dropdown:focus {
+    outline: none;
+    box-shadow: 0 0 5px #4a4a6a;
+}
+
+.filter-dropdown:focus-visible {
+    background-color: #292b3a;
+    box-shadow: none;
+}
+
+.filters-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #292b3a;
+    color: #fff;
+    cursor: pointer;
+}
+
+.user-profile {
+    padding: 10px 20px;
+    border-radius: 4px;
+    background-color: #292b3a;
+}
+
+.table-box {
+    background-color: #292b3a;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.table-box h2 {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.add-employee-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(180deg, #242533, #111);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+thead {
+    background: linear-gradient(180deg, #292b3a, #111);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #1e1e2f;
+}
+
+.edit-button, .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.edit-button {
+    color: #00bfa6;
+}
+
+.delete-button {
+    color: #ff4d4d;
+}
