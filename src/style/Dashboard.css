@@ -188,3 +188,13 @@ tr:nth-child(even) {
 .delete-button {
     color: #ff4d4d;
 }
+
+.button-transparent {
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+

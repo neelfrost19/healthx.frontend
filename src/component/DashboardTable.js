@@ -7,6 +7,7 @@ import {REACT_APP_API_HOST_URL as API_URL} from "../envs";
 import {ROUTES} from "../Route/Route";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import EditEmployeeModal from "./EditEmployeeModal";
 
 
 const DashboardContent = ({ onLogout }) => {
@@ -23,6 +24,9 @@ const DashboardContent = ({ onLogout }) => {
 
     const [staffData, setStaffData] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isEditModalOpen, setEditModalOpen] = useState(false);
+    const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+    const [staffId, setStaffId] = useState('');
     const [filter, setFilter] = useState(searchOptions[0].value);
     const [search, setSearch] = useState('');
 
@@ -75,10 +79,27 @@ const DashboardContent = ({ onLogout }) => {
         setIsModalOpen(true);
     };
 
+    const handleEditEmployee = (event) => {
+        console.log(event)
+        setStaffId('');
+        setEditModalOpen(true);
+    };
+
+    const handleDeleteEmployee = () => {
+        setDeleteModalOpen(true);
+    };
+
     const closeModal = () => {
         setIsModalOpen(false);
     };
 
+    const closeEditModal = () => {
+        setEditModalOpen(false);
+    };
+
+    const closeDeleteModal = () => {
+        setDeleteModalOpen(false);
+    };
     const handleFilterChange = (event) => {
         setFilter(event.target.value);
     };
@@ -140,8 +161,8 @@ const DashboardContent = ({ onLogout }) => {
                                 <td>{`+ ${employee.countryCode} ${employee.phone}`}</td>
                                 <td>{employee.role}</td>
                                 <td>
-                                    <RiEdit2Line/>
-                                    <RiDeleteBin6Line/>
+                                    <button className="button-transparent" onClick={handleEditEmployee}><RiEdit2Line/></button>
+                                    <button className="button-transparent" onClick={handleDeleteEmployee}><RiDeleteBin6Line/></button>
                                 </td>
                             </tr>
                         )) : (<div></div>)}
@@ -149,6 +170,8 @@ const DashboardContent = ({ onLogout }) => {
                     </table>
                 </div>
                 {isModalOpen && <AddEmployeeModal onClose={closeModal} />}
+                {isEditModalOpen && <EditEmployeeModal onClose={closeEditModal} />}
+                {/*{isModalOpen && <AddEmployeeModal onClose={closeModal} />}*/}
             </div>
         </div>
     );
