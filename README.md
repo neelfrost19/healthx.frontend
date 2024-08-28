@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# HealthX Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+HealthX Frontend is a simple web app for managing staff. This project utilizes endpoints from healthx.api to create an user, get accesstoken for an user, create staff.
+It's built using JavaScript and includes environment configuration and package management.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Create new user
+- Autheticate User
+- Manage User
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js
+- npm (Node Package Manager)
 
-### `npm test`
+### Library used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Axios : used to consume APIs
+- Luxon : used for getting simplified date methods
+- Uuid : used for getting unique ids
+- Dotenv : used for loading envs from proccess.env
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
+   git clone https://github.com/neelfrost19/healthx.frontend.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Navigate to the project directory:
+   cd healthx.frontend
 
-### `npm run eject`
+3. Install the dependencies:
+   npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Configuration
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Copy the example environment configuration file:
+   cp .env.example .env
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Edit the `.env` file with your configuration settings.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Setting Up ENV
 
-## Learn More
+1. For REACT_APP_API_HOST_URL, run healthx.api at any desired PORT or use the provided url.
+   provided: REACT_APP_API_HOST_URL = https://healthx-api.onrender.com
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Running the APP
 
-### Code Splitting
+Start the server:
+npm start
+The APP will be accessible at http://localhost:PORT 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Project Structure
+src/ - Contains the source code for the components and weboages
+.env.example - Example environment configuration file
+.gitignore - Specifies files to be ignored by Git
+package.json - Project metadata and dependencies
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Commit and Push
 
-### Making a Progressive Web App
+- After commiting and pushing any changes to master branch through the following command
+  `git push origin master`
+  Github action is triggered which automatically builds a docker image.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- After the above github action is completed, deployment action is triggered.
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- The above triggers a webhook from render to automatically deploy using the latest docker image.
