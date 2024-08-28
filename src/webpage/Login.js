@@ -21,8 +21,9 @@ const Login = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                localStorage.setItem('token', data.data.token);
+                sessionStorage.setItem('token', data.data.token);
                 navigate('/dashboard');
+                window.location.reload();
             } else {
                 alert('Login failed');
             }
