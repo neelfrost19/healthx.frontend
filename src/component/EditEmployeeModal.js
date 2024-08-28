@@ -4,7 +4,7 @@ import {REACT_APP_API_HOST_URL as API_URL} from "../envs";
 import {ROUTES} from "../Route/Route";
 import axios from "axios";
 
-const EditEmployeeModal = ({ onClose }) => {
+const EditEmployeeModal = ({ onClose, employeeId }) => {
     const [employeeData, setEmployeeData] = useState({
         firstName: '',
         lastName: '',
@@ -30,8 +30,8 @@ const EditEmployeeModal = ({ onClose }) => {
 
     const editEmployee = async () => {
         try {
-            console.log(`${API_URL}${ROUTES.Staff}`);
-            const response = await axios.patch(`${API_URL}/${ROUTES.Staff}`, employeeData,{
+            console.log(`${API_URL}/${ROUTES.Staff}/${employeeId}`);
+            const response = await axios.put(`${API_URL}/${ROUTES.Staff}/${employeeId}`, employeeData,{
                 headers: {
                     'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
                     'Content-Type': 'application/json'
@@ -45,7 +45,6 @@ const EditEmployeeModal = ({ onClose }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Employee Data:', employeeData);
         editEmployee().then(()=>{});
         onClose();
         setEmployeeData({

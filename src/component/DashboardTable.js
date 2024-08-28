@@ -8,6 +8,7 @@ import {ROUTES} from "../Route/Route";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import EditEmployeeModal from "./EditEmployeeModal";
+import DeleteEmployeeModal from "./DeleteEmployeeModal";
 
 
 const DashboardContent = ({ onLogout }) => {
@@ -73,19 +74,19 @@ const DashboardContent = ({ onLogout }) => {
         console.log(staffData);
         fetchData().then((resolve, reject) => {
         });
-    }, [setStaffData, isModalOpen]);
+    }, [setStaffData, isModalOpen, isEditModalOpen, isDeleteModalOpen]);
 
     const handleAddEmployee = () => {
         setIsModalOpen(true);
     };
 
-    const handleEditEmployee = (event) => {
-        console.log(event)
-        setStaffId('');
+    const handleEditEmployee = (id)  => {
+        setStaffId(id);
         setEditModalOpen(true);
     };
 
-    const handleDeleteEmployee = () => {
+    const handleDeleteEmployee = (id) => {
+        setStaffId(id);
         setDeleteModalOpen(true);
     };
 
@@ -161,8 +162,8 @@ const DashboardContent = ({ onLogout }) => {
                                 <td>{`+ ${employee.countryCode} ${employee.phone}`}</td>
                                 <td>{employee.role}</td>
                                 <td>
-                                    <button className="button-transparent" onClick={handleEditEmployee}><RiEdit2Line/></button>
-                                    <button className="button-transparent" onClick={handleDeleteEmployee}><RiDeleteBin6Line/></button>
+                                    <button className="button-transparent" onClick={()=> handleEditEmployee(employee._id)} ><RiEdit2Line/></button>
+                                    <button className="button-transparent" onClick={()=> handleDeleteEmployee(employee._id)}><RiDeleteBin6Line/></button>
                                 </td>
                             </tr>
                         )) : (<div></div>)}
@@ -170,8 +171,8 @@ const DashboardContent = ({ onLogout }) => {
                     </table>
                 </div>
                 {isModalOpen && <AddEmployeeModal onClose={closeModal} />}
-                {isEditModalOpen && <EditEmployeeModal onClose={closeEditModal} />}
-                {/*{isModalOpen && <AddEmployeeModal onClose={closeModal} />}*/}
+                {isEditModalOpen && <EditEmployeeModal onClose={closeEditModal} employeeId={staffId} />}
+                {isDeleteModalOpen && <DeleteEmployeeModal onClose={closeDeleteModal} employeeId={staffId}/>}
             </div>
         </div>
     );
