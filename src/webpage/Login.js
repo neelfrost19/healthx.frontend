@@ -10,7 +10,6 @@ const Login = () => {
 
     const handleLogin = async (user) => {
         try {
-            console.log(API_URL);
             const response = await fetch(`${API_URL}${ROUTES.Login}`, {
                 method: 'POST',
                 headers: {

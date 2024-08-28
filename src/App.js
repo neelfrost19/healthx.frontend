@@ -6,7 +6,6 @@ import Dashboard from './webpage/Dashboard';
 
 function App() {
   const isAuthenticated = !!sessionStorage.getItem('token');
-  console.log('is', isAuthenticated);
   return (
       <Router>
         <Routes>

@@ -10,23 +10,24 @@ const Signup = () => {
 
     const handleLogin = async (user) => {
         try {
+            const {text: userName, email, password} = user;
             const response = await fetch(`${API_URL}${ROUTES.User}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(user),
+                body: JSON.stringify({userName, email, password}),
             });
 
             if (response.ok) {
                 const data = await response.json();
                 sessionStorage.setItem('token', data.token);
                 navigate('/dashboard');
+                window.location.reload();
             } else {
                 alert('Signup failed');
             }
         } catch (error) {
-            console.error('Error:', error);
             alert('An error occurred while signing up');
         }
     };

@@ -5,7 +5,6 @@ const SignupForm = ({ onSubmit }) => {
     const [user, setUser] = useState({ text: '', email: '', password: '' });
 
     const handleChange = (e) => {
-        console.log(e.target);
         setUser({
             ...user,
             [e.target.type]: e.target.value,

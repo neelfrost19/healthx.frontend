@@ -9,7 +9,6 @@ const DeleteEmployeeModal = ({ onClose, employeeId }) => {
 
     const deleteEmployee = async () => {
         try {
-            console.log(`${API_URL}/${ROUTES.Staff}/${employeeId}`);
             const response = await axios.delete(`${API_URL}/${ROUTES.Staff}/${employeeId}`,{
                 headers: {
                     'Authorization': `Bearer ${sessionStorage.getItem('token')}`,

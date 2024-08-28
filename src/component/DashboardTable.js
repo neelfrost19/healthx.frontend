@@ -71,7 +71,6 @@ const DashboardContent = ({ onLogout }) => {
     };
 
     useEffect(() => {
-        console.log(staffData);
         fetchData().then((resolve, reject) => {
         });
     }, [setStaffData, isModalOpen, isEditModalOpen, isDeleteModalOpen]);

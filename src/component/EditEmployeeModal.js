@@ -30,7 +30,6 @@ const EditEmployeeModal = ({ onClose, employeeId }) => {
 
     const editEmployee = async () => {
         try {
-            console.log(`${API_URL}/${ROUTES.Staff}/${employeeId}`);
             const response = await axios.put(`${API_URL}/${ROUTES.Staff}/${employeeId}`, employeeData,{
                 headers: {
                     'Authorization': `Bearer ${sessionStorage.getItem('token')}`,

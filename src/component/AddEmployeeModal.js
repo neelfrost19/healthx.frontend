@@ -40,7 +40,6 @@ const AddEmployeeModal = ({ onClose }) => {
 
     const addEmployee = async () => {
         try {
-            console.log(`${API_URL}${ROUTES.Staff}`);
             const response = await axios.post(`${API_URL}/${ROUTES.Staff}`, employeeData,{
                 headers: {
                     'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
@@ -55,7 +54,6 @@ const AddEmployeeModal = ({ onClose }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Employee Data:', employeeData);
         addEmployee().then(()=>{});
         onClose();
         setEmployeeData({
