@@ -59,7 +59,8 @@ const DashboardContent = ({ onLogout }) => {
                     'Content-Type': 'application/json'
                 }
             });
-            setStaffData(response.data.data);
+            //setStaffData(response.data.data);
+            return response.data.data
 
         } catch (error) {
             console.log(error);
@@ -71,9 +72,10 @@ const DashboardContent = ({ onLogout }) => {
     };
 
     useEffect(() => {
-        fetchData().then((resolve, reject) => {
-        });
-    }, [setStaffData, isModalOpen, isEditModalOpen, isDeleteModalOpen]);
+       fetchData().then(data => {
+           setStaffData(data)
+       });
+    }, [isModalOpen, isEditModalOpen, isDeleteModalOpen, fetchData]);
 
     const handleAddEmployee = () => {
         setIsModalOpen(true);
